@@ -1,0 +1,12 @@
+Notes from raul:
+
+as of 2/8/2023
+
+the program connect to the AlphVantage free api to look up stock data 
+we also use the plotly library to organize the stock data in a nice chart
+
+next steps:
+add some part to view the stocks symbol
+add the ability to view up to 5 index funds
+add a tool to keep track of the top 5 performing index funds
+add a new page that lets you look up any index fund
