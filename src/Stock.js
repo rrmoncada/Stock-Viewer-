@@ -5,7 +5,7 @@ import Plot from 'react-plotly.js';
 //https://www.w3schools.com/react/react_class.asp 
 class Stock extends React.Component{   // creating a class component called stock
 
-    constructor(props){    // we use a constrocor to object called props ( properties) 
+    constructor(props){    // we use a constructor to object called props ( properties) 
         super(props);     // we have to use this because props is a object from class stock that extendes class react.component, so we need it to call parent class cosntructor
        
         // source on the below: https://www.w3schools.com/react/react_state.asp#:~:text=Changing%20the%20state%20Object,state%20object%2C%20use%20the%20this.
@@ -13,7 +13,14 @@ class Stock extends React.Component{   // creating a class component called stoc
             // change this
             stockChartXValues:[],  // array for stock x values
             //change this
-            stockChartYValues:[]   // arrat for stock y values
+            stockChartYValues:[],   // arrat for stock y values
+
+            stockChartXValues2:[],  // array for stock x values
+            //change this
+            stockChartYValues2:[]   // arrat for stock y values
+
+
+
         }
     }
 
@@ -25,17 +32,21 @@ class Stock extends React.Component{   // creating a class component called stoc
 
         const pointerToThis = this;
         
-       const API_KEY = 'IU9IBVWBJL8NOIKI';
+        const API_KEY = 'IU9IBVWBJL8NOIKI';
         let StockSymbol = 'SPY';  // S&P 500
     let API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
 
-        let symbol2 = 'NASDX'; //Nasdaq-100 index durect
-        
-        let symbol3 = 'DIA'; // SPDR dow Jones Industrial Average
+        let StockSymbol2 = 'NASDX'; //Nasdaq-100 index durect
+    let API_CALL2 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol2}&outputsize=compact&apikey=${API_KEY}`;
 
-        let symbol4 ='VTI'; // vanguard total stock market etf
+        let StockSymbol3 = 'DIA'; // SPDR dow Jones Industrial Average
+    let API_CALL3 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol3}&outputsize=compact&apikey=${API_KEY}`;
 
-        let symbol5 ='QQQ'; // INVESCO QQQ TRUST
+        let StockSymbol4 ='VTI'; // vanguard total stock market etf
+    let API_CALL4 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol4}&outputsize=compact&apikey=${API_KEY}`;
+
+        let StockSymbol5 ='QQQ'; // INVESCO QQQ TRUST
+    let API_CALL5 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol5}&outputsize=compact&apikey=${API_KEY}`;
 
 
         let stockChartXValuesFunction = [];
@@ -64,6 +75,35 @@ class Stock extends React.Component{   // creating a class component called stoc
                       });
                 }
             )
+
+                /*
+            let stockChartXValuesFunction2 = [];
+            let stockChartYValuesFunction2 = [];
+            fetch(API_CALL2)
+            .then(
+                function(response2){
+                    return response2.json();
+                }
+            )
+            .then(
+                function(data2){
+                    console.log(data2);
+
+                    for (var key in data2['Time Series (Daily)']) {    // loop gets the key value from each data point, the key  is date
+                        stockChartXValuesFunction2.push(key); // pushes key(date) to sotck chart x value
+                        // obtained the open price format from hovering over the data format in the console log
+                        stockChartYValuesFunction2.push(data2['Time Series (Daily)'][key]['1. open']);  // pushes open price to y value
+                      }
+                      
+                      // below I equal the 'this' variable to the x adn y values, because thos will be the values for the chart
+                      pointerToThis.setState({
+                        stockChartXValues2: stockChartXValuesFunction2,   
+                        stockChartYValues2: stockChartYValuesFunction2
+                      });
+                }
+            ) */
+        
+            
     }
 
 
@@ -85,7 +125,12 @@ class Stock extends React.Component{   // creating a class component called stoc
                     ]}
                     layout={{width: 720, height: 440, title: 'S&P 500'}}
                 />
+
+                
+                
             </div>
+
+            
 
         )
 
